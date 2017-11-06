@@ -49,6 +49,17 @@ LinkedList.prototype.search = function (searchValue) {
   return null;
 }
 
+LinkedList.prototype.indexOf = function (searchValue) {
+  var currentNode = this.head;
+  var i = 0;
+  while (currentNode) { 
+    if (currentNode.value === searchValue) return i;
+    currentNode = currentNode.next;
+    i++
+  }
+  return null;
+}
+
 var myLL = new LinkedList();
 
 // myLL.addToTail(10);
@@ -62,5 +73,5 @@ myLL.addToTail(40);
 
 // myLL.removeHead()
 // myLL.removeTail();
-console.log(myLL.search('aaa'));
+console.log(myLL.indexOf('aaa'));
 
