@@ -42,7 +42,7 @@ LinkedList.prototype.removeTail = function () {
 }
 LinkedList.prototype.search = function (searchValue) {
   var currentNode = this.head;
-  while (currentNode) { 
+  while (currentNode) {
     if (currentNode.value === searchValue) return currentNode.value;
     currentNode = currentNode.next;
   }
@@ -52,12 +52,13 @@ LinkedList.prototype.search = function (searchValue) {
 LinkedList.prototype.indexOf = function (searchValue) {
   var currentNode = this.head;
   var i = 0;
-  while (currentNode) { 
-    if (currentNode.value === searchValue) return i;
+  var indexes = [];
+  while (currentNode) {
+    if (currentNode.value === searchValue) indexes.push(i);
     currentNode = currentNode.next;
     i++
   }
-  return null;
+  return indexes;
 }
 
 var myLL = new LinkedList();
@@ -68,10 +69,10 @@ myLL.addToHead(100);
 myLL.addToHead(200);
 myLL.addToHead(3000);
 myLL.addToTail('aaa');
-myLL.addToTail(30);
+myLL.addToTail(3000);
 myLL.addToTail(40);
 
 // myLL.removeHead()
 // myLL.removeTail();
-console.log(myLL.indexOf('aaa'));
+console.log(myLL.indexOf(3000));
 
