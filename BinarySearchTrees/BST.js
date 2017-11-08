@@ -1,5 +1,5 @@
 
-function BST(value) { 
+function BST(value) {
   this.value = value;
   this.left = null;
   this.right = null;
@@ -16,9 +16,9 @@ BST.prototype.insert = function (value) {
   }
 }
 
-BST.prototype.contains = function (value) { 
+BST.prototype.contains = function (value) {
   if (value === this.value) return true;
-  else if (value < this.value) { 
+  else if (value < this.value) {
     if (!this.left) return false;
     else return this.left.contains(value)
   } else if (value > this.value) {
@@ -35,7 +35,7 @@ BST.prototype.depthFirstTraversal = function (iteratorFunc, order) {
   if(order === 'post-order') iteratorFunc(this.value);
 }
 
-BST.prototype.breathFirstTraversal = function (iteratorFunc) { 
+BST.prototype.breadthFirstTraversal = function (iteratorFunc) {
   var queue = [this];
   while (queue.length){
     var treeNode = queue.shift();
@@ -44,6 +44,17 @@ BST.prototype.breathFirstTraversal = function (iteratorFunc) {
     if (treeNode.right) queue.push(treeNode.right);
   }
 }
+
+BST.prototype.getMinVal = function () {
+  if (this.left) return this.left.getMinVal();
+  else return this.value;
+}
+BST.prototype.getMaxVal = function () {
+  if (this.right) return this.right.getMaxVal();
+  else return this.value;
+}
+
+
 
 var bst = new BST(50);
 
@@ -68,8 +79,8 @@ bst.insert(10);
 // }
 // console.log(bst.contains(22))
 
-function log(node) { 
+function log(node) {
   console.log(node.value);
 }
-
-bst.breathFirstTraversal(log);
+console.log(bst.getMinVal());
+console.log(bst.getMaxVal());
